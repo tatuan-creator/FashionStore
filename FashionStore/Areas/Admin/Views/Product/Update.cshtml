@@ -1,0 +1,69 @@
+﻿@model FashionStore.Models.SanPham
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@using (Html.BeginForm("Update", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.HiddenFor(m => m.MaSP)
+    <div class="container-xxl flex-grow-1 container-p-y">
+        <h4 class="fw-bold py-3 mb-4">Sản Phẩm</h4>
+        <div class="card">
+            <div class="card-header row">
+                <div class="col-md-6">
+                    <h5>Cập nhật sản phẩm</h5>
+                </div>
+                <div class="col-md-6 text-end">
+                    <a href="@Url.Action("Index", "Product")" class="btn btn-primary text-white"><i class="fa-solid fa-rotate-left"></i> Trở về</a>
+                    <button type="submit" class="btn btn-success text-white"><i class="fa-solid fa-floppy-disk"></i> Cập nhật</button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="mb-3">
+                    <label for="TenSP">Tên sản phẩm</label>
+                    @Html.TextBoxFor(m => m.TenSP, new { @class = "form-control my-2" })
+                </div>
+                <div class="mb-3">
+                    <label for="DonViTinh">Đơn vị tính</label>
+                    @Html.TextBoxFor(m => m.DonViTinh, new { @class = "form-control my-2" })
+                </div>
+                <div class="mb-3">
+                    <label for="DonGia">Đơn giá</label>
+                    @Html.TextBoxFor(m => m.DonGia, new { @class = "form-control my-2", @type = "number" })
+                </div>
+                <div class="mb-3">
+                    <label for="MaNH">Nhóm hàng</label>
+                    @Html.DropDownListFor(m => m.MaNH, new SelectList(ViewBag.Categories, "MaNH", "TenNH"), new { @class = "form-control my-2" })
+                </div>
+                <div class="mb-3">
+                    <label for="SoLuongTon">Số lượng tồn</label>
+                    @Html.TextBoxFor(m => m.SoLuongTon, new { @class = "form-control my-2", @type = "number" })
+                </div>
+                <div class="mb-3">
+                    <label for="ImageUpload">Hình ảnh</label>
+                    <input type="file" class="form-control" accept="image/png, image/jpeg" name="ImageUpload" id="ImageUpload" />
+                </div>
+                <div class="mb-3">
+                    <img id="ImagePreview" src="~/Content/images/@Model.Hinh" style="width: 200px" alt="Hình ảnh xem trước" />
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@section footer {
+    <script>
+        $(document).ready(function () {
+            $("#ImageUpload").on('change', function () {
+                let file = this.files[0];
+                let reader = new FileReader();
+
+                reader.onload = (e) => {
+                    $("#ImagePreview").attr("src", e.target.result);
+                }
+
+                reader.readAsDataURL(file);
+            })
+        })
+    </script>
+}
