@@ -30,37 +30,26 @@ namespace FashionStore.Areas.Admin.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult Update(int id)
+        public ActionResult Update(string tentaikhoan)
         {
-            var item = db.SanPhams.FirstOrDefault(m => m.MaSP == id);
-            ViewBag.Categories = db.NhomHangs.ToList();
+            var item = db.TaiKhoans.FirstOrDefault(m => m.TenTK == tentaikhoan);
             return View(item);
         }
 
         [HttpPost]
-        public ActionResult Update(SanPham sanPham, HttpPostedFileBase ImageUpload)
+        public ActionResult Update(TaiKhoan taiKhoan)
         {
-            var sanPhamDb = db.SanPhams.FirstOrDefault(m => m.MaSP == sanPham.MaSP);
-            sanPhamDb.TenSP = sanPham.TenSP;
-            sanPhamDb.DonGia = sanPham.DonGia;
-            sanPhamDb.DonViTinh = sanPham.DonViTinh;
-            sanPhamDb.MaNH = sanPham.MaNH;
-            sanPhamDb.SoLuongTon = sanPham.SoLuongTon;
-
+            var taikhoandb = db.TaiKhoans.FirstOrDefault(m => m.TenTK == taiKhoan.TenTK);
+            taikhoandb.TenTK = taiKhoan.TenTK;
+            taikhoandb.MatKhau = taiKhoan.MatKhau;
             db.SubmitChanges();
             return RedirectToAction("Index");
         }
 
-        public ActionResult Details(int id)
+        public ActionResult Delete(string tentaikhoan)
         {
-            var item = db.SanPhams.FirstOrDefault(m => m.MaSP == id);
-            return View(item);
-        }
-
-        public ActionResult Delete(int id)
-        {
-            var item = db.SanPhams.FirstOrDefault(m => m.MaSP == id);
-            db.SanPhams.DeleteOnSubmit(item);
+            var item = db.TaiKhoans.FirstOrDefault(m => m.TenTK == tentaikhoan);
+            db.TaiKhoans.DeleteOnSubmit(item);
             db.SubmitChanges();
             return RedirectToAction("Index");
         }
