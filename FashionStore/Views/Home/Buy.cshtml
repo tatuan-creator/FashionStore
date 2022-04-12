@@ -1,0 +1,48 @@
+﻿@model FashionStore.Models.HoaDon
+
+@{
+    ViewBag.Title = "Buy";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Buy", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="container-xxl flex-grow-1 container-p-y">
+        <h4 class="fw-bold py-3 mb-4">Thanh Toán</h4>
+        <div class="card" style="padding-left:500px; padding-right:500px">
+            <div class="card-header row">
+                <div class="col-md-6">
+                    <h5>Thông tin đơn hàng</h5>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="mb-3">
+                    <label for="TenSP">Ngày lập hóa đơn</label>
+                    <p>@Model.NgayLapHD</p>
+                </div>
+                <div class="mb-3">
+                    <label for="DonViTinh">Tổng tiền hàng</label>
+                    <p>@Model.TongTienHang</p>
+                </div>
+                <div class="mb-3">
+                    <label for="DonGia">Phí vận chuyển</label>
+                    <p>@Model.PhiVanChuyen</p>
+                </div>
+                <div class="mb-3">
+                    <label for="DonGia">Tổng tiền</label>
+                    <p>@Model.TongHoaDon</p>
+                </div>
+                <div class="mb-3">
+                    <label for="MaHT">Hình thức thanh toán</label>
+                </div>
+                <div >
+                    @Html.DropDownListFor(m => m.MaHT, new SelectList(ViewBag.httt, "MaHT", "TenHT"), new { @class = "form-control my-3" })
+                </div>
+            </div>
+            <div class="col-md-6 text-end">
+                <a href="@Url.Action("ShopingBag", "Home")" class="btn btn-primary text-white">Trở về</a>
+                <button type="submit" class="btn btn-success text-white">Thêm</button>
+            </div>
+        </div>
+    </div>
+}

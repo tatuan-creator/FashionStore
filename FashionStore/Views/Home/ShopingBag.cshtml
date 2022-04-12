@@ -1,0 +1,48 @@
+﻿@model IEnumerable<FashionStore.Models.CT_GioHang>
+
+@{
+    ViewBag.Title = "ShopingBag";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ShopingBag</h2>
+
+<table class="table" style="padding-left:200px; padding-right:200px">
+    <tr>
+        <th>
+            <p>Tên sản phẩm</p>
+        </th>
+        <th>
+            <p>Hình</p>
+        </th>
+        <th>
+            <p>Số Lượng</p>
+        </th>
+        <th>
+            <p>Thành Tiền</p>
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.SanPham.TenSP)
+        </td>
+        <td>
+            <img src="~/Content/images/@item.SanPham.Hinh" width="200" />
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SoLuong)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ThanhTien)
+        </td>
+        <td>
+            <a href="@Url.Action("Buy", "Home",new {id = item.CartID})" class="btn btn-sm btn-success">Mua</a>
+            <a href="@Url.Action("Delete", "Home",new {id = item.CartID})" class="btn btn-sm btn-warning">Xóa</a>
+        </td>
+    </tr>
+}
+
+</table>

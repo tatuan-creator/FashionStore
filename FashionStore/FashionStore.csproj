@@ -135,6 +135,7 @@
     <Compile Include="Areas\Admin\Controllers\CustomerAccountController.cs" />
     <Compile Include="Areas\Admin\Controllers\CustomerController.cs" />
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
+    <Compile Include="Areas\Admin\Controllers\HoaDonController.cs" />
     <Compile Include="Areas\Admin\Controllers\PayController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -346,6 +347,7 @@
     <Content Include="Areas\Admin\Views\Customer\Update.cshtml" />
     <Content Include="Areas\Admin\Views\CustomerAccount\Index.cshtml" />
     <Content Include="Areas\Admin\Views\CustomerAccount\Update.cshtml" />
+    <Content Include="Areas\Admin\Views\HoaDon\Index.cshtml" />
     <None Include="Models\MyData.dbml.layout">
       <DependentUpon>MyData.dbml</DependentUpon>
     </None>
@@ -414,6 +416,8 @@
     <Content Include="Views\Shop\Index.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\Create.cshtml" />
+    <Content Include="Views\Home\ShopingBag.cshtml" />
+    <Content Include="Views\Home\Buy.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
