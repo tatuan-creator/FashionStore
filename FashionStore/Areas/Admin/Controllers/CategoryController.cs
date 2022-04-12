@@ -19,6 +19,7 @@ namespace FashionStore.Areas.Admin.Controllers
 
         public ActionResult Create()
         {
+            ViewBag.CategoryStatus = db.TrangThaiNHs.ToList();
             return View(new NhomHang());
         }
 
@@ -33,6 +34,7 @@ namespace FashionStore.Areas.Admin.Controllers
         public ActionResult Update(int id)
         {
             var item = db.NhomHangs.FirstOrDefault(m => m.MaNH == id);
+            ViewBag.CategoryStatus = db.TrangThaiNHs.ToList();
             return View(item);
         }
 
@@ -41,6 +43,7 @@ namespace FashionStore.Areas.Admin.Controllers
         {
             var item = db.NhomHangs.FirstOrDefault(m => m.MaNH == nhomHang.MaNH);
             item.TenNH = nhomHang.TenNH;
+            item.MaTT = nhomHang.MaTT;
             db.SubmitChanges();
             return RedirectToAction("Index");
         }

@@ -1,0 +1,51 @@
+﻿@model FashionStore.Models.KhachHang
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Create", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="container-xxl flex-grow-1 container-p-y">
+        <div class="card" style="padding-left:450px; padding-right:450px;">
+            <div class="card-header row">
+                <div class="col-md-6">
+                    <h5>Thêm khách hàng</h5>
+                </div>
+                <div class="col-md-6 text-end">
+                    <a href="@Url.Action("Login", "Home")" class="btn btn-primary text-white">Trở về</a>
+                    <button type="submit" class="btn btn-success text-white">Đăng ký</button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="mb-3">
+                    <label for="TenKH">Tên khách hàng</label>
+                    @Html.TextBoxFor(m => m.TenKH, new { @class = "form-control my-2" })
+                </div>
+                <div class="mb-3">
+                    <label for="DiaChi">Địa chỉ</label>
+                    @Html.TextBoxFor(m => m.DiaChi, new { @class = "form-control my-2" })
+                </div>
+                <div class="mb-3">
+                    <label for="SDT">Số Điện Thoại</label>
+                    @Html.TextBoxFor(m => m.SDT, new { @class = "form-control my-2" })
+                </div>
+                <div class="mb-3">
+                    <label for="Email">Email</label>
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control my-2" })
+                </div>
+                <div class="mb-3">
+                    <label for="TenDangNhap">Tên đăng nhập</label>
+                    @Html.TextBoxFor(m => m.TenDangNhap, new { @class = "form-control my-2" })
+                </div>
+                <div class="mb-3">
+                    <label for="MatKhau">Mật khẩu</label>
+                    @Html.TextBoxFor(m => m.MatKhau, new { @class = "form-control my-2" })
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+

@@ -1,0 +1,34 @@
+﻿@model FashionStore.Models.KhachHang
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Login", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div style="padding-left:500px; padding-right:500px">
+    <div class="container-xxl flex-grow-1 container-p-y">
+        <h4 class="fw-bold py-3 mb-4 text-center">Đăng nhập</h4>
+        <div class="card">
+            <div class="card-body">
+                <div class="mb-3">
+                    <label for="TenSP">Tên Đăng Nhập</label>
+                    @Html.TextBoxFor(m => m.TenDangNhap, new { @class = "form-control my-2" })
+                </div>
+                <div class="mb-3">
+                    <label for="DonViTinh">Mật Khẩu</label>
+                    @Html.TextBoxFor(m => m.MatKhau, new { @class = "form-control my-2" })
+                </div>
+                <div class="mb-3" style="justify-items:end">
+                    <p>@ViewBag.ThongBao</p>
+                    @*<a href="" class="btn btn-success text-black">Đăng nhập</a>*@
+                    <input type="submit" value="Đăng nhập" class="btn btn-success text-black" />
+                </div>
+                <div class="mb-3">
+                    <a href="@Url.Action("Create","Home")" class="">Chưa có tài khoản ? - Đăng ký</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+}

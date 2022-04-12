@@ -1,0 +1,54 @@
+﻿@model FashionStore.Models.KhachHang
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@using (Html.BeginForm("Create", "Customer", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="container-xxl flex-grow-1 container-p-y">
+        <h4 class="fw-bold py-3 mb-4">Khách hàng</h4>
+        <div class="card">
+            <div class="card-header row">
+                <div class="col-md-6">
+                    <h5>Thêm khách hàng</h5>
+                </div>
+                <div class="col-md-6 text-end">
+                    <a href="@Url.Action("Index", "Customer")" class="btn btn-primary text-white"><i class="fa-solid fa-rotate-left"></i> Trở về</a>
+                    <button type="submit" class="btn btn-success text-white"><i class="fa-solid fa-plus"></i> Thêm</button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="mb-3">
+                    <label for="TenKH">Tên khách hàng</label>
+                    @Html.TextBoxFor(m => m.TenKH, new { @class = "form-control my-2" })
+                </div>
+                <div class="mb-3">
+                    <label for="DiaChi">Địa chỉ</label>
+                    @Html.TextBoxFor(m => m.DiaChi, new { @class = "form-control my-2" })
+                </div>
+                <div class="mb-3">
+                    <label for="SDT">Số Điện Thoại</label>
+                    @Html.TextBoxFor(m => m.SDT, new { @class = "form-control my-2" })
+                </div>
+                <div class="mb-3">
+                    <label for="Email">Email</label>
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control my-2" })
+                </div>
+                <div class="mb-3">
+                    <label for="TenDangNhap">Tên đăng nhập</label>
+                    @Html.TextBoxFor(m => m.TenDangNhap, new { @class = "form-control my-2" })
+                </div>
+                <div class="mb-3">
+                    <label for="MatKhau">Mật khẩu</label>
+                    @Html.TextBoxFor(m => m.MatKhau, new { @class = "form-control my-2" })
+                </div>
+                <div class="mb-3">
+                    <label for="MaTT">Trạng thái tài khoản</label>
+                    @Html.DropDownListFor(m => m.MaTT, new SelectList(ViewBag.CustomerStatus, "MaTT", "TenTT"), new { @class = "form-control my-2" })
+                </div>
+            </div>
+        </div>
+    </div>
+}
+

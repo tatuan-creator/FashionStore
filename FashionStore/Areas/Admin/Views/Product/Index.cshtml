@@ -26,27 +26,29 @@
                         <th class="text-center">Đơn giá</th>
                         <th class="text-center">Nhóm hàng</th>
                         <th class="text-center">Số lượng tồn</th>
+                        <th class="text-center">Trạng thái kinh doanh</th>
                         <th class="text-center"></th>
                     </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">
                     @foreach (var item in Model)
                     {
-                        <tr>
-                            <td class="text-center">
-                                <img src="~/Content/images/@item.Hinh" style="width: 100px"/>
-                            </td>
-                            <td>@item.TenSP</td>
-                            <td class="text-center">@item.DonViTinh</td>
-                            <td class="text-center">@item.DonGia</td>
-                            <td class="text-center">@item.NhomHang.TenNH</td>
-                            <td class="text-center">@item.SoLuongTon</td>
-                            <td class="text-center">
-                                <a href="@Url.Action("Details", "Product", new {id = item.MaSP})" class="btn btn-sm btn-primary text-white"><i class="fa-solid fa-eye"></i></a>
-                                <a href="@Url.Action("Update", "Product", new {id = item.MaSP})" class="btn btn-sm btn-warning text-white"><i class="fa-solid fa-pen-to-square"></i></a>
-                                <a data-id="@item.MaSP" class="btn btn-sm btn-danger text-white btn-delete"><i class="fa-solid fa-trash"></i></a>
-                            </td>
-                        </tr>
+                    <tr>
+                        <td class="text-center">
+                            <img src="~/Content/images/@item.Hinh" style="width: 100px" />
+                        </td>
+                        <td>@item.TenSP</td>
+                        <td class="text-center">@item.DonViTinh</td>
+                        <td class="text-center">@item.DonGia</td>
+                        <td class="text-center">@item.NhomHang.TenNH</td>
+                        <td class="text-center">@item.SoLuongTon</td>
+                        <td class="text-center">@item.TrangThaiSP.TenTT</td>
+                        <td class="text-center">
+                            <a href="@Url.Action("Details", "Product", new {id = item.MaSP})" class="btn btn-sm btn-primary text-white"><i class="fa-solid fa-eye"></i></a>
+                            <a href="@Url.Action("Update", "Product", new {id = item.MaSP})" class="btn btn-sm btn-warning text-white"><i class="fa-solid fa-pen-to-square"></i></a>
+                            <a data-id="@item.MaSP" class="btn btn-sm btn-danger text-white btn-delete"><i class="fa-solid fa-trash"></i></a>
+                        </td>
+                    </tr>
                     }
                 </tbody>
             </table>

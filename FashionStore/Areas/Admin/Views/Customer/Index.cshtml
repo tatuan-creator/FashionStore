@@ -1,0 +1,66 @@
+﻿@model IEnumerable<FashionStore.Models.KhachHang>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h5>Danh sách khách hàng</h5>
+    <div class="card">
+        <div class="card-header row">
+            <div class="col-md-6">
+            </div>
+            <div class="col-md-6 text-end">
+                <a href="@Url.Action("Create", "Customer")" class="btn btn-success text-white"><i class="fa-solid fa-plus"></i> Thêm</a>
+            </div>
+        </div>
+        <div class="table-responsive text-nowrap card-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="text-center">Tên khách hàng</th>
+                        <th class="text-center">Địa chỉ</th>
+                        <th class="text-center">Số điện thoại</th>
+                        <th class="text-center">Email</th>
+                        <th class="text-center">Tiền tích lũy</th>
+                        <th class="text-center">Trạng thái</th>
+                        <th class="text-center"></th>
+                        <th class="text-center">Tài khoản</th>
+                    </tr>
+                </thead>
+                <tbody class="table-border-bottom-0">
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td class="text-center">@item.TenKH</td>
+                            <td class="text-center">@item.DiaChi</td>
+                            <td class="text-center">@item.SDT</td>
+                            <td class="text-center">@item.Email</td>
+                            <td class="text-center">@item.TongTien</td>
+                            <td class="text-center">@item.TrangThaiKH.TenTT</td>
+                            <td class="text-center">
+                                <a href="@Url.Action("Update", "Customer", new {id = item.MaKH})" class="btn btn-sm btn-warning text-white"><i class="fa-solid fa-pen-to-square"></i></a>
+                                <a data-id="@item.MaKH" class="btn btn-sm btn-danger text-white btn-delete"><i class="fa-solid fa-trash"></i></a>
+                            </td>
+                            <td class="text-center">
+                                <a href="@Url.Action("Index", "CustomerAccount", new {id = item.MaKH})" class="btn btn-sm btn-primary text-white"><i class="fa-solid fa-pen-to-square"></i></a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section footer {
+    <script>
+        $(".btn-delete").on('click', function () {
+            let id = $(this).attr("data-id");
+            if (confirm("Bạn có chắc chắn muốn xóa khách hàng với id: " + id)) {
+                window.location.href = '/Admin/Customer/Delete?id=' + id;
+            }
+        })
+    </script>
+}
+

@@ -22,7 +22,9 @@ namespace FashionStore.Areas.Admin.Controllers
 
         public ActionResult Create()
         {
-            ViewBag.Categories = db.NhomHangs.ToList();
+            ViewBag.ProductStatus = db.TrangThaiSPs.ToList();
+            var banCategory = db.TrangThaiNHs.FirstOrDefault(m => m.TenTT == "Hoạt Động");
+            ViewBag.Categories = db.NhomHangs.Where(m => m.MaTT == banCategory.MaTT).ToList();
             return View(new SanPham());
         }
 
@@ -45,7 +47,9 @@ namespace FashionStore.Areas.Admin.Controllers
         public ActionResult Update(int id)
         {
             var item = db.SanPhams.FirstOrDefault(m => m.MaSP == id);
-            ViewBag.Categories = db.NhomHangs.ToList();
+            var banCategory = db.TrangThaiNHs.FirstOrDefault(m => m.TenTT == "Hoạt Động");
+            ViewBag.Categories = db.NhomHangs.Where(m => m.MaTT == banCategory.MaTT).ToList();
+            ViewBag.ProductStatus = db.TrangThaiSPs.ToList();
             return View(item);
         }
 
@@ -69,6 +73,7 @@ namespace FashionStore.Areas.Admin.Controllers
             sanPhamDb.DonViTinh = sanPham.DonViTinh;
             sanPhamDb.MaNH = sanPham.MaNH;
             sanPhamDb.SoLuongTon = sanPham.SoLuongTon;
+            sanPhamDb.MaTT = sanPham.MaTT;
 
             db.SubmitChanges();
             return RedirectToAction("Index");

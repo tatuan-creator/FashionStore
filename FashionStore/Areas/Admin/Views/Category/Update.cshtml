@@ -23,6 +23,10 @@
                     <label for="TenNH">Tên nhóm hàng</label>
                     @Html.TextBoxFor(m => m.TenNH, new { @class = "form-control my-2" })
                 </div>
+                <div class="form-group">
+                    <label for="MaTT">Trạng Thái</label>
+                    @Html.DropDownListFor(m => m.MaTT, new SelectList(ViewBag.CategoryStatus, "MaTT", "TenTT"), new { @class = "form-control my-2" })
+                </div>
             </div>
         </div>
     </div>

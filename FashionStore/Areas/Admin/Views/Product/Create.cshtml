@@ -35,6 +35,10 @@
                     @Html.DropDownListFor(m => m.MaNH, new SelectList(ViewBag.Categories, "MaNH", "TenNH"), new { @class = "form-control my-2" })
                 </div>
                 <div class="mb-3">
+                    <label for="MaTT">Trạng thái hàng</label>
+                    @Html.DropDownListFor(m => m.MaTT, new SelectList(ViewBag.ProductStatus, "MaTT", "TenTT"), new { @class = "form-control my-2" })
+                </div>
+                <div class="mb-3">
                     <label for="SoLuongTon">Số lượng tồn</label>
                     @Html.TextBoxFor(m => m.SoLuongTon, new { @class = "form-control my-2", @type = "number" })
                 </div>

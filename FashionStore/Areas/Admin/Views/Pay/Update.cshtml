@@ -1,0 +1,35 @@
+﻿@model FashionStore.Models.HinhThucThanhToan
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Update", "Pay", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.HiddenFor(m => m.MaHT)
+    <div class="container-xxl flex-grow-1 container-p-y">
+        <h4 class="fw-bold py-3 mb-4">Hình Thức Thanh Toán</h4>
+        <div class="card">
+            <div class="card-header row">
+                <div class="col-md-6">
+                    <h5>Cập nhật hình thức</h5>
+                </div>
+                <div class="col-md-6 text-end">
+                    <a href="@Url.Action("Index", "Pay")" class="btn btn-primary text-white"><i class="fa-solid fa-rotate-left"></i> Trở về</a>
+                    <button type="submit" class="btn btn-success text-white"><i class="fa-solid fa-floppy-disk"></i> Cập nhật</button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="mb-3">
+                    <label for="TenHT">Tên Hình Thức</label>
+                    @Html.TextBoxFor(m => m.TenHT, new { @class = "form-control my-2" })
+                </div>
+                <div class="mb-3">
+                    <label for="MaTT">Trạng thái</label>
+                    @Html.DropDownListFor(m => m.MaTT, new SelectList(ViewBag.PayStatus, "MaTT", "TenTrangThai"), new { @class = "form-control my-2" })
+                </div>
+            </div>
+        </div>
+    </div>
+}
+

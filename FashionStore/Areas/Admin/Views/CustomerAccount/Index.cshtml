@@ -1,0 +1,37 @@
+﻿@model FashionStore.Models.KhachHang
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h5>Tài khoản khách hàng</h5>
+    <div class="card">
+        <div class="card-header row">
+            <div class="col-md-6">
+            </div>
+        </div>
+        <div class="table-responsive text-nowrap card-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="text-center">Tên đăng nhập</th>
+                        <th class="text-center">Mật Khẩu</th>
+                        <th class="text-center"></th>
+                    </tr>
+                </thead>
+                <tbody class="table-border-bottom-0">
+                        <tr>
+                            <td class="text-center">@Model.TenDangNhap</td>
+                            <td class="text-center">@Model.MatKhau</td>
+                            <td class="text-center">
+                                <a href="@Url.Action("Update", "CustomerAccount", new {id = Model.MaKH})" class="btn btn-sm btn-warning text-white"><i class="fa-solid fa-pen-to-square"></i></a>
+                            </td>
+                        </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
